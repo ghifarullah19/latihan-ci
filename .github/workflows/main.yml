@@ -40,6 +40,8 @@ jobs:
           git add .gitattributes
           git commit -m "Track large files in mlruns with Git LFS" || true
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Save mlruns to repo
         run: |
           git config --global user.name ${{secrets.username}}
@@ -47,3 +49,5 @@ jobs:
           git add -f mlruns/
           git commit -m "Save mlruns from CI run" || true
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
